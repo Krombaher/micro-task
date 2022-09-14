@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-// import { Button } from './components/Button';
+import { Button } from './components/Button';
 import { NewComponent } from './components/NewComponent';
 
-type FilterType = 'All' | 'Dollars' | 'RUBLS'
+export type FilterType = 'All' | 'Dollars' | 'RUBLS'
 
 function App() {
     const [money, setMoney] = useState([
@@ -38,13 +38,9 @@ function App() {
         <div className="App">
             <NewComponent currentMoney={currentMoney}/>
 
-            <button onClick={() => onClickFilterHandler('All')}>All</button>
-            <button onClick={() => onClickFilterHandler('Dollars')}>Dollars</button>
-            <button onClick={() => onClickFilterHandler('RUBLS')}>RUBLS</button>
-
-            {/* <Button name={'All'} onClickFilterHandler={onClickFilterHandler} />
-            <Button name={'Dollars'} onClickFilterHandler={onClickFilterHandler} />
-            <Button name={'Rubls'} onClickFilterHandler={onClickFilterHandler} /> */}
+            <Button name={'All'} callback={() => onClickFilterHandler('All')}/>
+            <Button name={'Dollars'} callback={() => onClickFilterHandler('Dollars')}/>
+            <Button name={'RUBLS'} callback={() => onClickFilterHandler('RUBLS')}/>
         </div>
     );
 }
