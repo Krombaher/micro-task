@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Task1} from './components/Task-1/Task-1';
 import {Task2} from "./components/Task-2/Task2";
+import { Task3 } from './components/Task-3/Task-3';
 
 export type FilterType = 'All' | 'Dollars' | 'RUBLS'
 
@@ -25,8 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <Task1 money={money}/>
-      <Task2 topCars={topCars}/>
+     <Task3/>
     </div>
   );
 }

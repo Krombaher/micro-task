@@ -13,7 +13,12 @@ type MoneyComponentType = {
 }
 
 export const Task1 = (props: MoneyProps) => {
-  const [filter, setFilter] = useState<FilterType>('All')
+  const nameButton = [
+    {name: 'All'},
+    {name: 'Dollars'},
+    {name: 'RUBLS'}
+  ]
+  const [filter, setFilter] = useState('All')
 
   let currentMoney = props.money
 
@@ -25,7 +30,7 @@ export const Task1 = (props: MoneyProps) => {
     currentMoney = props.money.filter(f => f.banknots === 'Dollars')
   }
 
-  const onClickFilterHandler = (nameButton: FilterType) => {
+  const onClickFilterHandler = (nameButton: string) => {
     setFilter(nameButton)
   }
 
@@ -44,10 +49,17 @@ export const Task1 = (props: MoneyProps) => {
           })
         }
       </ul>
+      {
+        nameButton.map(btn => {
+          return (
+            <Button name={btn.name} callback={() => onClickFilterHandler(btn.name)}/>
+          )
+        })
+      }
 
-      <Button name={'All'} callback={() => onClickFilterHandler('All')}/>
+      {/* <Button name={'All'} callback={() => onClickFilterHandler('All')}/>
       <Button name={'Dollars'} callback={() => onClickFilterHandler('Dollars')}/>
-      <Button name={'RUBLS'} callback={() => onClickFilterHandler('RUBLS')}/>
+      <Button name={'RUBLS'} callback={() => onClickFilterHandler('RUBLS')}/> */}
     </div>
   )
 }
