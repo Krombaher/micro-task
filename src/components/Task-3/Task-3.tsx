@@ -1,25 +1,30 @@
 import React, { useState } from 'react'
+import { Button } from './Button'
 import { FullInput } from './FullInput'
+import { Input } from './Input'
 
 export const Task3 = () => {
 
   const [message, setMessage] = useState([
-    {message: ''},
-    // {message: 'message2'},
-    // {message: 'message3'},
-    // {message: 'message4'},
-    // {message: 'message5'}
-])
+    { message: '' },
+  ])
 
- const addMessage = (title: string) => {
+  let [title, setTitle] = useState('');
 
-    let newMessage = {message: title};
+  const addMessage = (title: string) => {
+    let newMessage = { message: title };
     setMessage([newMessage, ...message])
+  }
+
+  const onClickButtonHandler = () => {
+    addMessage(title)
+    setTitle('')
   }
 
   return (
     <div>
-      <FullInput addMessage={addMessage}/>
+      <Input title={title} setTitle={setTitle} />
+      <Button name={'+'} callback={onClickButtonHandler} />
       {
         message.map((el, index) => {
           return (
